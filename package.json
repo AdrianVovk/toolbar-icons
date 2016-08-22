@@ -1,7 +1,7 @@
 {
-	"name": "tool-bar-main",
+	"name": "tool-default",
 	"version": "0.0.10",
-	"description": "Main tool bar",
+	"description": "Default tool bar configuration",
     "repository":{
         "type": "git",
         "url": "https://github.com/suda/tool-bar-main"
