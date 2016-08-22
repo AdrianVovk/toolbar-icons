@@ -8,60 +8,62 @@ module.exports =
   serialize: ->
 
   consumeToolBar: (toolBar) ->
-    @toolBar = toolBar 'main-tool-bar'
+    @toolBar = toolBar 'toolbar-default'
 
     @toolBar.addButton
-      icon: 'document'
-      callback: 'application:new-file'
+      icon: 'plus'
+      callback: 'tree-view:add-file' # TODO do not use this make cusom version and use eventually.
       tooltip: 'New File'
-      iconset: 'ion'
+      iconset: 'mdi'
+
+    @toolBar.addButton
+      icon: 'content-save'
+      callback: 'project-plus:save'
+      tooltip: 'Save Project'
+      iconset: 'mdi'
+
     @toolBar.addButton
       icon: 'folder'
-      callback: 'application:open-file'
+      callback: 'project-plus:toggle-project-finder'
       tooltip: 'Open...'
-      iconset: 'ion'
-    @toolBar.addButton
-      icon: 'archive'
-      callback: 'core:save'
-      tooltip: 'Save'
-      iconset: 'ion'
+      iconset: 'mdi'
 
     @toolBar.addSpacer()
 
     @toolBar.addButton
-      icon: 'search'
-      callback: 'find-and-replace:show'
-      tooltip: 'Find in Buffer'
-      iconset: 'ion'
+      icon: 'play'
+      callback: ->
+          atom.notifications.addWarning('Run feature coming soon!', null)
+      tooltip: 'Run'
+      iconset: 'mdi'
+
     @toolBar.addButton
-      icon: 'shuffle'
-      callback: 'find-and-replace:show-replace'
-      tooltip: 'Replace in Buffer'
-      iconset: 'ion'
+      icon: 'bug'
+      callback: ->
+          atom.notifications.addWarning('Debug feature coming soon!', null)
+      tooltip: 'Debug'
+      iconset: 'mdi'
 
     @toolBar.addSpacer()
 
     @toolBar.addButton
-      icon: 'navicon-round'
-      callback: 'command-palette:toggle'
-      tooltip: 'Toggle Command Palette'
-      iconset: 'ion'
-    @toolBar.addButton
-      icon: 'gear-a'
+      icon: 'settings'
       callback: 'settings-view:open'
       tooltip: 'Open Settings View'
-      iconset: 'ion'
+      iconset: 'mdi'
 
     if atom.inDevMode()
-      @toolBar.addSpacer()
+      
 
       @toolBar.addButton
         icon: 'refresh'
         callback: 'window:reload'
         tooltip: 'Reload Window'
-        iconset: 'ion'
+        iconset: 'mdi'
+
       @toolBar.addButton
-        icon: 'terminal'
+        icon: 'code-tags'
         callback: ->
           require('remote').getCurrentWindow().toggleDevTools()
         tooltip: 'Toggle Developer Tools'
+        iconset: 'mdi'

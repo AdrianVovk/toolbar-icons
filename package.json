@@ -1,6 +1,6 @@
 {
-	"name": "tool-default",
-	"version": "0.0.10",
+	"name": "toolbar-default",
+	"version": "1.0.0",
 	"description": "Default tool bar configuration",
     "repository":{
         "type": "git",
