@@ -1,14 +1,13 @@
 module.exports =
   activate: (state) ->
-    require('atom-package-deps').install('tool-bar-main')
 
   deactivate: ->
     @toolBar?.removeItems()
 
   serialize: ->
 
-  consumeToolBar: (toolBar) ->
-    @toolBar = toolBar 'toolbar-default'
+  consumeToolBar: (getToolBar) ->
+    @toolBar = getToolBar 'toolbar-icons'
 
     @toolBar.addButton
       icon: 'plus'
@@ -53,7 +52,6 @@ module.exports =
       iconset: 'mdi'
 
     if atom.inDevMode()
-      
 
       @toolBar.addButton
         icon: 'refresh'

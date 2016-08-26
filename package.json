@@ -1,17 +1,17 @@
 {
-	"name": "toolbar-default",
-	"version": "1.0.0",
-	"description": "Default tool bar configuration",
+	"name": "toolbar-icons",
+	"version": "0.0.01",
+	"description": "Defult toolbar icon configuration.",
     "repository":{
         "type": "git",
-        "url": "https://github.com/suda/tool-bar-main"
+        "url": "https://github.com/AdrianVovk/toolbar-icons"
     },
 	"keywords": [
 		"toolbar",
 		"tool-bar"
 	],
 	"license": "MIT",
-	"main": "./lib/tool-bar-main",
+	"main": "./lib/toolbar-icons.coffee",
 	"dependencies": {
 		"atom-package-deps": "^3.0.7"
 	},
