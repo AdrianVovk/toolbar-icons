@@ -70,9 +70,10 @@ module.exports =
         icon: 'upload'
         callback: ->
           editorElement = atom.views.getView(atom.workspace.getActiveTextEditor())
-          atom.commands.dispatch(editorElement, 'git-plus:commit')
           if atom.config.get("toolbar-icons.pushWithCommit")
-            atom.commands.dispatch(editorElement, 'git-plus:push')
+            atom.commands.dispatch(editorElement, 'git-plus:add-all-commit-and-push')
+          else
+            atom.commands.dispatch(editorElement, 'git-plus:add-all-and-commit')
         tooltip: 'Commit'
         iconset: 'mdi'
 
