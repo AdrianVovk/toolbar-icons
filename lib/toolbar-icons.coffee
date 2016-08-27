@@ -1,5 +1,13 @@
 module.exports =
+  config:
+    pushWithCommit:
+      type: 'boolean'
+      default: true
+      title: 'Commit and Push'
+      description: 'The "Commit" button in the toolbar also pushes the project to the remote repository'
+
   activate: (state) ->
+
 
   deactivate: ->
     @toolBar?.removeItems()
@@ -8,6 +16,8 @@ module.exports =
 
   consumeToolBar: (getToolBar) ->
     @toolBar = getToolBar 'toolbar-icons'
+
+    console.log 'TESTING'
 
     @toolBar.addButton
       icon: 'plus'
@@ -42,6 +52,35 @@ module.exports =
           atom.notifications.addWarning('Debug feature coming soon!', null)
       tooltip: 'Debug'
       iconset: 'mdi'
+
+    # TODO: Modify project-plus to support service callback whenever a session changes and add a way to check if the current session is using version control.
+    # TODO: Modify git-plus to make it more generic and usable
+    if true
+      #Time for some Git controls
+      @toolBar.addSpacer()
+
+      @toolBar.addButton
+        icon: 'git'
+        callback: ->
+            atom.notifications.addWarning('HI', null)
+        tooltip: 'Git Menu'
+        iconset: 'mdi'
+
+      @toolBar.addButton
+        icon: 'upload'
+        callback: ->
+          editorElement = atom.views.getView(atom.workspace.getActiveTextEditor())
+          atom.commands.dispatch(editorElement, 'git-plus:commit')
+          if atom.config.get("toolbar-icons.pushWithCommit")
+            atom.commands.dispatch(editorElement, 'git-plus:push')
+        tooltip: 'Commit'
+        iconset: 'mdi'
+
+      @toolBar.addButton
+        icon: 'download'
+        callback: 'git-plus:pull'
+        tooltip: 'Pull'
+        iconset: 'mdi'
 
     @toolBar.addSpacer()
 
