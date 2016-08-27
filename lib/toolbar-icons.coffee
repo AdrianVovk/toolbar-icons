@@ -61,8 +61,7 @@ module.exports =
 
       @toolBar.addButton
         icon: 'git'
-        callback: ->
-            atom.notifications.addWarning('HI', null)
+        callback: 'git-plus:menu'
         tooltip: 'Git Menu'
         iconset: 'mdi'
 
