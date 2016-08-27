@@ -17,8 +17,6 @@ module.exports =
   consumeToolBar: (getToolBar) ->
     @toolBar = getToolBar 'toolbar-icons'
 
-    console.log 'TESTING'
-
     @toolBar.addButton
       icon: 'plus'
       callback: 'tree-view:add-file' # TODO do not use this make cusom version and use eventually.
