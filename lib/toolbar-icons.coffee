@@ -39,15 +39,13 @@ module.exports =
 
     @toolBar.addButton
       icon: 'play'
-      callback: ->
-          atom.notifications.addWarning('Run feature coming soon!', null)
+      callback: 'build:run'
       tooltip: 'Run'
       iconset: 'mdi'
 
     @toolBar.addButton
       icon: 'bug'
-      callback: ->
-          atom.notifications.addWarning('Debug feature coming soon!', null)
+      callback: 'build:debug'
       tooltip: 'Debug'
       iconset: 'mdi'
 
