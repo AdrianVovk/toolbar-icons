@@ -23,6 +23,8 @@ module.exports =
       tooltip: 'New File'
       iconset: 'mdi'
 
+    atom.getCurrentWindow().setTitl
+
     @toolBar.addButton
       icon: 'content-save'
       callback: 'project-plus:save'
@@ -51,13 +53,13 @@ module.exports =
 
     # TODO: Modify project-plus to support service callback whenever a session changes and add a way to check if the current session is using version control.
     # TODO: Modify git-plus to make it more generic and usable
-    if true
+    if atom.project.getRepositories()[0]?
       #Time for some Git controls
       @toolBar.addSpacer()
 
       @toolBar.addButton
         icon: 'git'
-        callback: 'git-plus:menu'
+        callback: 'git:menu'
         tooltip: 'Git Menu'
         iconset: 'mdi'
 
@@ -66,15 +68,15 @@ module.exports =
         callback: ->
           editorView = atom.views.getView(atom.workspace)
           if atom.config.get("toolbar-icons.pushWithCommit")
-            atom.commands.dispatch(editorView, 'git-plus:add-all-commit-and-push')
+            atom.commands.dispatch(editorView, 'git:add-all-commit-and-push')
           else
-            atom.commands.dispatch(editorView, 'git-plus:add-all-and-commit')
+            atom.commands.dispatch(editorView, 'git:add-all-and-commit')
         tooltip: 'Commit'
         iconset: 'mdi'
 
       @toolBar.addButton
         icon: 'download'
-        callback: 'git-plus:pull'
+        callback: 'git:pull'
         tooltip: 'Pull'
         iconset: 'mdi'
 
