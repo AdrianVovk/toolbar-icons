@@ -23,8 +23,6 @@ module.exports =
       tooltip: 'New File'
       iconset: 'mdi'
 
-    atom.getCurrentWindow().setTitl
-
     @toolBar.addButton
       icon: 'content-save'
       callback: 'project-plus:save'
