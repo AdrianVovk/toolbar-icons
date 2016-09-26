@@ -11,7 +11,7 @@
     "tool-bar"
   ],
   "license": "MIT",
-  "main": "./lib/toolbar-icons.coffee",
+  "main": "./lib/toolbar-icons",
   "dependencies": {
     "atom-package-deps": "^3.0.7"
   },
