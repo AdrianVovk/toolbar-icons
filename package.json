@@ -1,7 +1,7 @@
 {
   "name": "toolbar-icons-ide",
-  "version": "1.0.2",
-  "description": "Defult toolbar icon configuration.",
+  "version": "1.0.3",
+  "description": "Defult toolbar icon configuration. 111",
   "repository": {
     "type": "git",
     "url": "https://github.com/AdrianVovk/toolbar-icons"
@@ -24,7 +24,7 @@
   "consumedServices": {
     "tool-bar": {
       "versions": {
-        "^0 || ^1": "consumeToolBar"
+        "1.0.0": "consumeToolBar"
       }
     }
   }
