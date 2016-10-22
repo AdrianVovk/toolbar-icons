@@ -25,13 +25,13 @@ module.exports =
 
     @toolBar.addButton
       icon: 'content-save'
-      callback: 'project-plus:save'
+      callback: 'project:save'
       tooltip: 'Save Project'
       iconset: 'mdi'
 
     @toolBar.addButton
       icon: 'folder'
-      callback: 'project-plus:toggle-project-finder'
+      callback: 'project:toggle-project-finder'
       tooltip: 'Open...'
       iconset: 'mdi'
 
