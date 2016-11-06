@@ -64,7 +64,7 @@ module.exports =
         callback: 'git:menu'
         tooltip: 'Git Menu'
         iconset: 'mdi'
-#
+
       @toolBar.addButton
         icon: 'upload'
         callback: ->
