@@ -65,7 +65,7 @@ module.exports =
         tooltip: 'Git Menu'
         iconset: 'mdi'
 
-#test
+##test
       @toolBar.addButton
         icon: 'upload'
         callback: if atom.config.get("toolbar-icons.pushWithCommit") then 'git:add-all-commit-and-push' else 'git:add-all-and-commit'
