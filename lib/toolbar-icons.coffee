@@ -64,7 +64,7 @@ module.exports =
         callback: 'git:menu'
         tooltip: 'Git Menu'
         iconset: 'mdi'
-
+#
       @toolBar.addButton
         icon: 'upload'
         callback: if atom.config.get("toolbar-icons-ide.pushWithCommit") then 'git:add-all-commit-and-push' else 'git:add-all-and-commit'
