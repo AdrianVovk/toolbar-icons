@@ -25,8 +25,8 @@ module.exports =
 
     @toolBar.addButton
       icon: 'content-save'
-      callback: 'project:save'
-      tooltip: 'Save Project'
+      callback: 'core:save'
+      tooltip: 'Save'
       iconset: 'mdi'
 
     @toolBar.addButton
@@ -49,8 +49,12 @@ module.exports =
       tooltip: 'Debug'
       iconset: 'mdi'
 
-    # TODO: Modify project-plus to support service callback whenever a session changes and add a way to check if the current session is using version control.
-    # TODO: Modify git-plus to make it more generic and usable
+    @toolBar.addButton
+      icon: 'publish'
+      callback: 'build:release'
+      tooltip: 'Release'
+      iconset: 'mdi'
+
     if atom.project.getRepositories()[0]?
       #Time for some Git controls
       @toolBar.addSpacer()
@@ -63,12 +67,7 @@ module.exports =
 
       @toolBar.addButton
         icon: 'upload'
-        callback: ->
-          editorView = atom.views.getView(atom.workspace)
-          if atom.config.get("toolbar-icons.pushWithCommit")
-            atom.commands.dispatch(editorView, 'git:add-all-commit-and-push')
-          else
-            atom.commands.dispatch(editorView, 'git:add-all-and-commit')
+        callback: if atom.config.get("toolbar-icons.pushWithCommit") then 'git:add-all-commit-and-push' else 'git:add-all-and-commit'
         tooltip: 'Commit'
         iconset: 'mdi'
 
@@ -83,7 +82,7 @@ module.exports =
     @toolBar.addButton
       icon: 'settings'
       callback: 'settings-view:open'
-      tooltip: 'Open Settings View'
+      tooltip: 'Settings'
       iconset: 'mdi'
 
     if atom.inDevMode()
@@ -96,7 +95,6 @@ module.exports =
 
       @toolBar.addButton
         icon: 'code-tags'
-        callback: ->
-          require('remote').getCurrentWindow().toggleDevTools()
-        tooltip: 'Toggle Developer Tools'
+        callback: 'window:toggle-dev-tools'
+        tooltip: 'Developer Tools'
         iconset: 'mdi'
