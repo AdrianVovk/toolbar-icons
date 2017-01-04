@@ -1,3 +1,5 @@
+{CompositeDisposable} = require 'atom'
+
 module.exports =
   config:
     pushWithCommit:
@@ -7,15 +9,24 @@ module.exports =
       description: 'The "Commit" button in the toolbar also pushes the project to the remote repository'
 
   activate: (state) ->
-
+    @subscriptions = new CompositeDisposable
+    @subscriptions.add atom.project.onDidChangePaths () => @populate()
 
   deactivate: ->
+    @subscriptions.dispose()
     @toolBar?.removeItems()
 
   serialize: ->
 
   consumeToolBar: (getToolBar) ->
     @toolBar = getToolBar 'toolbar-icons'
+    @populate()
+
+  populate: () ->
+    unless @toolBar
+      return
+
+    @toolBar.removeItems()
 
     @toolBar.addButton
       icon: 'plus'
@@ -31,7 +42,7 @@ module.exports =
 
     @toolBar.addButton
       icon: 'folder'
-      callback: 'project:toggle-project-finder'
+      callback: 'project:list'
       tooltip: 'Open...'
       iconset: 'mdi'
 
@@ -67,8 +78,8 @@ module.exports =
 
       @toolBar.addButton
         icon: 'upload'
-        callback: ->
-          atom.commands.dispatch(atom.views.getView(atom.workspace), if atom.config.get("toolbar-icons-ide.pushWithCommit") then 'git:add-all-commit-and-push' else 'git:add-all-and-commit')
+        callback: =>
+          atom.commands.dispatch atom.views.getView(atom.workspace), if atom.config.get("toolbar-icons-ide.pushWithCommit") then 'git:add-all-commit-and-push' else 'git:add-all-and-commit'
         tooltip: 'Commit'
         iconset: 'mdi'
 
